@@ -29,7 +29,7 @@ var server = http.createServer();
 server.once('request', handler);
 
 server.on('listening', function() {
-	opn('http://' + config.hostname +':' + server.address().port)
+  require('child_process').spawn(process.env.BROWSER, ['http://' + config.hostname +':' + server.address().port])
 })
 
 server.listen(config.port, config.hostname)
